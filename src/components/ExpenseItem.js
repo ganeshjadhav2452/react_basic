@@ -1,15 +1,12 @@
+import ExpenseDate from './ExpenseDate.js'
 import "./ExpenseItem.css";
-
+import ExpenseDetails from  './ExpenseDetails.js';
 function ExpenseItem(obj) {
- 
+  
   return (
     <div className="expense-item">
-      <div>{obj.date.toDateString()}</div>
-      <div className="expense-item__description">
-        <h2>{obj.title}</h2>
-        <h2>{obj.location}</h2>
-        <div className="expense-item__price">${obj.amount}</div>
-      </div>
+      <ExpenseDate date={obj.date} />
+      <ExpenseDetails title={obj.title} location={obj.location} amount={obj.amount}></ExpenseDetails>
     </div>
   );
 }

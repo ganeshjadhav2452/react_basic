@@ -20,7 +20,7 @@ function App() {
       id: "e3",
       title: "Car Insurance",
       amount: 294.67,
-      date: new Date(2021, 2, 28),
+      date: new Date(),
       location: "babu bhaiyya car company",
     },
     {
@@ -29,6 +29,13 @@ function App() {
       amount: 450,
       date: new Date(2021, 5, 12),
       location: "shri furniture",
+    },
+    {
+      id: "e5",
+      title: "English Dictionary",
+      amount: 30,
+      date: new Date(2021, 5, 12),
+      location: "Gurukul Book Stall",
     },
   ];
 
