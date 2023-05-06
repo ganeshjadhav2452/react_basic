@@ -1,5 +1,5 @@
 
-function ExpenseDetails(details) {
+let ExpenseDetails=(details)=> {
 
 
   return (

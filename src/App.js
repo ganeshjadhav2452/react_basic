@@ -1,6 +1,9 @@
-import ExpenseItem from "./components/ExpenseItem";
 
-function App() {
+import Expenses from './components/Expenses/Expenses.js'
+
+import Card from './components/UI/Card.js'
+
+let App=() =>{
   let expenses = [
     {
       id: "e1",
@@ -30,29 +33,14 @@ function App() {
       date: new Date(2021, 5, 12),
       location: "shri furniture",
     },
-    {
-      id: "e5",
-      title: "English Dictionary",
-      amount: 30,
-      date: new Date(2021, 5, 12),
-      location: "Gurukul Book Stall",
-    },
+    
   ];
 
   return (
-    <div>
+    <Card>
       <h2>Let's get started!</h2>
-      {expenses.map((obj) => {
-        return (
-          <ExpenseItem
-            title={obj.title}
-            amount={obj.amount}
-            date={obj.date}
-            location={obj.location}
-          ></ExpenseItem>
-        );
-      })}
-    </div>
+      <Expenses items={expenses}></Expenses>
+    </Card>
   );
 }
 
