@@ -11,7 +11,7 @@ let ExpenseItem = (obj) => {
     let parentOfExpense = currentCard.parentElement;
     parentOfExpense.removeChild(currentCard);
   };
-  
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={obj.date} />
@@ -20,7 +20,7 @@ let ExpenseItem = (obj) => {
         location={obj.location}
         amount={obj.amount}
       ></ExpenseDetails>
-      <button onClick={deleteExpense}>Delete Expense</button>
+      <button className="expense-item__price" onClick={deleteExpense}>Delete</button>
     </Card>
   );
 };
