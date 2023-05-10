@@ -5,35 +5,23 @@ import Card from "../UI/Card";
 import React, { useState } from "react";
 
 let ExpenseItem = (obj) => {
-
   const [title, setTitle] = useState(obj.title);
 
   let changeTitle = (e) => {
     setTitle("new Title");
     console.log("hey clicked");
-
-    
   };
 
-  const [value,setValue] = useState(obj.amount);
-
-  const changeExpense=()=>{
-    setValue(100)
-  }
-
   return (
-    <Card className="expense-item">
+    <Card className="expense-item ">
       <ExpenseDate date={obj.date} />
       <ExpenseDetails
         title={title}
         location={obj.location}
-        amount={value}
+        amount={obj.amount}
       ></ExpenseDetails>
-      <button className="expense-item__price" onClick={changeTitle}>
-        Change Title
-      </button>
-      <button className="expense-item__price" onClick={changeExpense}>
-        Change Expense
+      <button className="expense-item__price h-25 mt-3" onClick={changeTitle}>
+        change title
       </button>
     </Card>
   );
