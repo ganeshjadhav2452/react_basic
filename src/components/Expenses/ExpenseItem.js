@@ -3,7 +3,8 @@ import "./ExpenseItem.css";
 import ExpenseDetails from "./ExpenseDetails.js";
 import Card from "../UI/Card";
 import React, { useState } from "react";
-import ExpenseFormJsx from '../ExpenseForm/ExpenseFormJsx'
+
+
 let ExpenseItem = (obj) => {
   const [title, setTitle] = useState(obj.title);
 

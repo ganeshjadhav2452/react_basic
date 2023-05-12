@@ -1,29 +1,45 @@
 import { useState } from "react";
 
 const ExpenseFormJsx = () => {
-    const [title, setTitle] = useState('')
-    const [amount, setAmount] = useState('')
-    const [date, setDate] = useState('')
+    const [updatedSate, updateTheState] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: '',
+    });
+
 
     const enteredTitle = (e) => {
-        setTitle(e.target.value)
-        console.log(title)
+        updateTheState({
+            ...updatedSate,
+            enteredTitle: e.target.value,
+        });
 
-    }
+    };
 
-    const enteredAmount = (e)=>{
-       setAmount(e.target.value)
-       console.log(amount)
-    }
-    const enteredDate = (e)=>{
-        setDate(e.target.value)
-        console.log(date)
+    const enteredAmount = (e) => {
+        updateTheState({
+            ...updatedSate,
+            enteredAmount: e.target.value,
+        });
 
+    };
+
+    const enteredDate = (e) => {
+        updateTheState({
+            ...updatedSate,
+            enteredDate: e.target.value,
+        });
+
+    };
+
+    const GetAllInputData = (e) => {
+        e.preventDefault();
+        console.log(updatedSate)
     }
 
     return (
         <div className="container">
-            <form>
+            <form onSubmit={GetAllInputData}>
                 <div className="row ">
                     <div className="col">
                         <input
@@ -45,16 +61,20 @@ const ExpenseFormJsx = () => {
                         <input
                             type="date"
                             className="form-control input3"
-
                             onChange={enteredDate}
                         />
                     </div>
                 </div>
-
+                <div className="col-12 d-flex justify-content-around mt-4 ">
+                    <button
+                        type="submit"
+                        className="col-6 rounded-pill btn btn-primary fs-4 submitBtn" >
+                        Add Expense
+                    </button>
+                </div>
             </form>
         </div>
     );
-
-}
+};
 
 export default ExpenseFormJsx;

@@ -34,14 +34,7 @@ let App = (props) => {
         </ExpenseFormJsx>
 
       </Card>
-      <div className="col-12 d-flex justify-content-around mt-4 ">
-        <button onClick={getInputs}
-          type="submit"
-          className="col-6 rounded-pill btn btn-primary fs-4 submitBtn"
-        >
-          Add Expense
-        </button>
-      </div>
+      
 
       <Card>
 
