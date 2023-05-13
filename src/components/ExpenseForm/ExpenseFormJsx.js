@@ -1,41 +1,48 @@
 import { useState } from "react";
 
-const ExpenseFormJsx = () => {
-    const [updatedSate, updateTheState] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: '',
+const ExpenseFormJsx = (props) => {
+    const [updatedState, updateTheState] = useState({
+        enteredTitle: "",
+        enteredAmount: "",
+        enteredDate: "",
     });
-
 
     const enteredTitle = (e) => {
         updateTheState({
-            ...updatedSate,
+            ...updatedState,
             enteredTitle: e.target.value,
         });
-
     };
 
     const enteredAmount = (e) => {
         updateTheState({
-            ...updatedSate,
+            ...updatedState,
             enteredAmount: e.target.value,
         });
-
     };
 
     const enteredDate = (e) => {
         updateTheState({
-            ...updatedSate,
+            ...updatedState,
             enteredDate: e.target.value,
         });
-
     };
 
     const GetAllInputData = (e) => {
         e.preventDefault();
-        console.log(updatedSate)
-    }
+        let allInputes = {
+            enteredTitle: updatedState.enteredTitle,
+            enteredAmount: updatedState.enteredAmount,
+            enteredDate: new Date(updatedState.enteredDate),
+          };
+        props.sendObjectInThisFunction(allInputes)
+        console.log(updatedState);
+        updateTheState({
+            enteredTitle: "",
+            enteredAmount: "",
+            enteredDate: "",
+        });
+    };
 
     return (
         <div className="container">
@@ -47,6 +54,7 @@ const ExpenseFormJsx = () => {
                             className="form-control input1"
                             placeholder="Title of Expense"
                             onChange={enteredTitle}
+                            value={updatedState.enteredTitle}
                         />
                     </div>
                     <div className="col">
@@ -55,6 +63,7 @@ const ExpenseFormJsx = () => {
                             className="form-control input2"
                             placeholder="Expense Amount"
                             onChange={enteredAmount}
+                            value={updatedState.enteredAmount}
                         />
                     </div>
                     <div className="col">
@@ -62,13 +71,15 @@ const ExpenseFormJsx = () => {
                             type="date"
                             className="form-control input3"
                             onChange={enteredDate}
+                            value={updatedState.enteredDate}
                         />
                     </div>
                 </div>
                 <div className="col-12 d-flex justify-content-around mt-4 ">
                     <button
                         type="submit"
-                        className="col-6 rounded-pill btn btn-primary fs-4 submitBtn" >
+                        className="col-6 rounded-pill btn btn-primary fs-4 submitBtn"
+                    >
                         Add Expense
                     </button>
                 </div>
