@@ -30,13 +30,14 @@ const ExpenseFormJsx = (props) => {
 
     const GetAllInputData = (e) => {
         e.preventDefault();
+
         let allInputes = {
             enteredTitle: updatedState.enteredTitle,
             enteredAmount: updatedState.enteredAmount,
-            enteredDate: new Date(updatedState.enteredDate),
+            enteredDate: updatedState.enteredDate,
           };
         props.sendObjectInThisFunction(allInputes)
-        console.log(updatedState);
+       
         updateTheState({
             enteredTitle: "",
             enteredAmount: "",

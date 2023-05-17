@@ -1,29 +1,36 @@
-import ExpenseDate from "./ExpenseDate.js";
+import React from 'react';
+
+// import ExpenseDate from "./ExpenseDate.js";
 import "./ExpenseItem.css";
-import ExpenseDetails from "./ExpenseDetails.js";
 import Card from "../UI/Card";
-import React, { useState } from "react";
+import { useState } from "react";
 
 
-let ExpenseItem = (obj) => {
-  const [title, setTitle] = useState(obj.title);
+let ExpenseItem = (props) => {
+ 
 
-  let changeTitle = (e) => {
-    setTitle("new Title");
-    console.log("hey clicked");
-  };
+  let month = props.date.toLocaleString("en-US", { month: "long" });
+  let day = props.date.toLocaleString("en-US", { day: "2-digit" });
+  let year = props.date.getFullYear();
+  console.log('month is' ,month)
 
+  console.log('props of expense item', props)
   return (
     <Card className="expense-item ">
-      <ExpenseDate date={obj.date} />
-      <ExpenseDetails
-        title={title}
-        location={obj.location}
-        amount={obj.amount}
-      ></ExpenseDetails>
-      <button className="expense-item__price h-25 mt-3" onClick={changeTitle}>
-        change title
-      </button>
+
+      <div className="expense-date">
+        <div className="expense-date__year">{year}</div>
+        <div className="expense-date__month">{month}</div>
+        <div className="expense-date__day">{day}</div>
+      </div>
+
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <h2>{props.location}</h2>
+        <div className="expense-item__price">${props.amount}</div>
+      </div>
+
+    
     </Card>
   );
 };

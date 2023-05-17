@@ -1,12 +1,14 @@
+import React from 'react';
+
 import Card from "../UI/Card.js";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 
 let Expenses=(props) =>{
-  let expenses = props.items;
+ console.log('props of expenses', props)
   return (
     <div>
-      {expenses.map((obj) => {
+      {props.items.map((obj) => {
         return (
           <Card className='expenses'>
             <ExpenseItem
