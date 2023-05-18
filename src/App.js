@@ -8,17 +8,8 @@ import ExpenseFormJsx from "./components/ExpenseForm/ExpenseFormJsx.js";
 import { useState } from "react";
 
 
-let dummyData = [
-  {
-    id: "e1",
-    title: 'toilet paper',
-    amount: 94.12,
-    date: new Date(2020, 6, 14),
-    
-    location: "Nana Generel Store",
-  },
-];
-let App = (props) => {
+let dummyData = [];
+let App = () => {
 const [expense,setExpense] = useState(dummyData)
 
 
@@ -27,21 +18,23 @@ const [expense,setExpense] = useState(dummyData)
     setExpense(prevExpense => {
       return [...prevExpense, enteredData]
     })
-    console.log('entered Data from app.js',enteredData)
-    console.log('expense Array',expense)
+   
   };
-
+  
   return (
     <div className="container">
       <Card>
-        <ExpenseFormJsx sendObjectInThisFunction={getInputs}></ExpenseFormJsx>
+        <ExpenseFormJsx sendObjectInThisFunction={getInputs} props={expense}></ExpenseFormJsx>
       </Card>
 
-      <Card>
-        <Expenses items={expense}></Expenses>
-      </Card>
+    <Card >
+    <Expenses items={expense} ></Expenses>
+    </Card>
+    
+     
     </div>
   );
 };
+
 
 export default App;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import ExpenseFilter from "../Expenses/ExpenseFilter";
+import Card from "../UI/Card";
 const ExpenseFormJsx = (props) => {
     const [updatedState, updateTheState] = useState({
         enteredTitle: "",
@@ -32,12 +33,13 @@ const ExpenseFormJsx = (props) => {
         e.preventDefault();
 
         let allInputes = {
-            enteredTitle: updatedState.enteredTitle,
-            enteredAmount: updatedState.enteredAmount,
-            enteredDate: updatedState.enteredDate,
+            title: updatedState.enteredTitle,
+            amount: updatedState.enteredAmount,
+            date: new Date( updatedState.enteredDate),
           };
         props.sendObjectInThisFunction(allInputes)
-       
+      
+
         updateTheState({
             enteredTitle: "",
             enteredAmount: "",
@@ -52,6 +54,7 @@ const ExpenseFormJsx = (props) => {
                     <div className="col">
                         <input
                             type="text"
+                           
                             className="form-control input1"
                             placeholder="Title of Expense"
                             onChange={enteredTitle}
@@ -61,6 +64,8 @@ const ExpenseFormJsx = (props) => {
                     <div className="col">
                         <input
                             type="number"
+                            min="0.01" 
+                            step="0.01" 
                             className="form-control input2"
                             placeholder="Expense Amount"
                             onChange={enteredAmount}
@@ -70,6 +75,8 @@ const ExpenseFormJsx = (props) => {
                     <div className="col">
                         <input
                             type="date"
+                            min="2019-05-01" 
+                            max="2023-05-30" 
                             className="form-control input3"
                             onChange={enteredDate}
                             value={updatedState.enteredDate}
@@ -85,6 +92,10 @@ const ExpenseFormJsx = (props) => {
                     </button>
                 </div>
             </form>
+            
+           
+            
+          
         </div>
     );
 };
