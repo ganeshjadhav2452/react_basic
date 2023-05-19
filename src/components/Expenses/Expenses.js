@@ -4,7 +4,7 @@ import Card from "../UI/Card.js";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpenseFilter from './ExpenseFilter.js';
-import'./ExpenseFilter.css';
+import './ExpenseFilter.css';
 
 
 let Expenses = (props) => {
@@ -12,28 +12,30 @@ let Expenses = (props) => {
 
   let [selectedYear, setSelectedYear] = useState('2020')
 
-    let onFilterChange = (selectedYear)=>{
-      setSelectedYear(selectedYear)
-      
-    }
+  let onFilterChange = (selectedYear) => {
+    setSelectedYear(selectedYear)
 
-    const filteredExpense = props.items.filter(expense =>{
-      return expense.date.getFullYear(props.date).toString() == selectedYear;
-    } )
-    console.log('filtered array',filteredExpense)
+  }
+
+  const filteredExpense = props.items.filter(expense => {
+    return expense.date.getFullYear(props.date).toString() == selectedYear;
+  })
+  console.log('filtered array', filteredExpense)
   return (
     <div>
       <Card className='expenses'>
-      <ExpenseFilter
-      selected={selectedYear}
-      passSelectedYearInThisFunction={onFilterChange}
-      />
+        <ExpenseFilter
+          selected={selectedYear}
+          passSelectedYearInThisFunction={onFilterChange}
+        />
       </Card>
-      
-      {filteredExpense.map((obj) => {
+
+
+
+      {filteredExpense.length == 0 ? <p className='noContent'>Sorry ! there is no content to render...</p> : filteredExpense.map((obj) => {
         return (
-          <Card  className='expenses'>
-           
+          <Card className='expenses'>
+
             <ExpenseItem
               title={obj.title}
               amount={obj.amount}

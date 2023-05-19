@@ -7,7 +7,7 @@ let ExpenseDate =(obj) =>{
 
   let month = obj.date.toLocaleString("en-US", { month: "long" });
   let day = obj.date.toLocaleString("en-US", { day: "2-digit" });
-  let year = obj.date.getFullYear();
+  let year = obj.date.getFullYear(obj.date);
   console.log('month is' ,month)
 
   return (
