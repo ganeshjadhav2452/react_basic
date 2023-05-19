@@ -13,7 +13,7 @@ let App = () => {
 const [expense,setExpense] = useState(dummyData)
 
 
-
+ 
   let getInputs = (enteredData) => {
     setExpense(prevExpense => {
       return [...prevExpense, enteredData]
@@ -25,8 +25,9 @@ const [expense,setExpense] = useState(dummyData)
     <div className="container">
       <Card>
         <ExpenseFormJsx sendObjectInThisFunction={getInputs} props={expense}></ExpenseFormJsx>
+       
       </Card>
-
+     
     <Card >
     <Expenses items={expense} ></Expenses>
     </Card>

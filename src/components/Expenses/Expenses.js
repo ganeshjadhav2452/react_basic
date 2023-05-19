@@ -5,7 +5,7 @@ import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpenseFilter from './ExpenseFilter.js';
 import './ExpenseFilter.css';
-
+import ExpensesChart from './ExpensesChart.js';
 
 let Expenses = (props) => {
   console.log('props.expenses', props.items)
@@ -28,8 +28,9 @@ let Expenses = (props) => {
           selected={selectedYear}
           passSelectedYearInThisFunction={onFilterChange}
         />
+      
       </Card>
-
+      <ExpensesChart expenses={filteredExpense}></ExpensesChart>
 
 
       {filteredExpense.length == 0 ? <p className='noContent'>Sorry ! there is no content to render...</p> : filteredExpense.map((obj) => {
